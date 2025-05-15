@@ -1,14 +1,10 @@
-Here’s the English translation of your provided text:
-
----
-
 # Harmony Dynamic Routing Framework: TheRouter
 
 [![Hex.pm](https://img.shields.io/hexpm/l/plug.svg)](https://www.apache.org/licenses/LICENSE-2.0)  
 [![Language](https://img.shields.io/badge/Language-ArkTS-green)](https://kotlinlang.org/)  
 [![Wiki](https://img.shields.io/badge/Wiki-open-green)](https://therouter.cn/harmony)
 
-Harmony | [Android](https://github.com/HuolalaTech/hll-wp-therouter-android) | [iOS](https://github.com/HuolalaTech/hll-wp-therouter-ios) | [Official Site (EN)](https://en.therouter.cn)
+Harmony | [Android](https://github.com/HuolalaTech/hll-wp-therouter-android) | [iOS](https://github.com/HuolalaTech/hll-wp-therouter-ios) | [Official Site](https://therouter.cn)
 
 ---
 
