@@ -1,0 +1,14 @@
+{
+  "name": "myapplication",
+  "version": "1.0.0",
+  "modelVersion": "5.0.0",
+  "author": "ZhangTao",
+  "license": "Apache-2.0",
+  "description": "A framework for assisting in the renovation of Harmony componentization",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "@ohos/hypium": "1.0.19",
+    "@ohos/hamock": "1.0.0"
+  }
+}

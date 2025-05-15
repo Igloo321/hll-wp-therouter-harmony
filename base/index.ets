@@ -1,0 +1,1 @@
+export { BaseConstant } from './src/main/ets/constants/BaseConstant';

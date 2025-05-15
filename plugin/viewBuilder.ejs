@@ -1,0 +1,104 @@
+// TheRouter Generated code, Don't modify!!!
+// Created by kymjs, and APT Version is <%= aptVersion %> !
+import <%if(isDefaultExport) {%> <%= componentName %> <% } else {%> { <%= componentName %> } <% } %> from '<%= importPath %>'
+import { TemplateService, TheRouter, OpacityOption, ScaleOption, TranslateOption } from '<%= groupId %>library'
+
+@Builder
+export function <%= componentName %>Builder(name: string, param: Object) {
+  <%= componentName %>Generated(param)
+}
+
+export const <%= componentName %>BuilderWrapBuilder = wrapBuilder(<%= componentName %>Builder)
+
+@Component
+export struct <%= componentName %>Generated {
+  @State translateOption: TranslateOption = new TranslateOption()
+  @State scaleOption: ScaleOption = new ScaleOption()
+  @State opacityOption: OpacityOption = new OpacityOption()
+  private pageUrl: string = ''
+  private ndId: string = ''
+  private pageId: string = ''
+  private stackId: string = ''
+
+  aboutToAppear(): void {
+    this.stackId = this.queryNavigationInfo()!.navigationId;
+    const allPathName = TheRouter.getPathStack(this.stackId)?.getAllPathName();
+    this.pageUrl = allPathName ? allPathName[allPathName.length - 1] : '';
+    const pageNumber = this.hash(this.stackId + '-' + this.pageUrl + '-' + new Date().getTime())
+    this.pageId = `${pageNumber}`
+    TemplateService.aboutToAppear(this.pageId, this.stackId, this.pageUrl, this.translateOption, this.scaleOption, this.opacityOption)
+  }
+
+  aboutToDisappear(): void {
+    TemplateService.aboutToDisappear(this.pageId, this.stackId, this.pageUrl, this.ndId)
+  }
+
+  build() {
+    NavDestination() {
+      <%= componentName %>()
+    }
+    .hideTitleBar(true)
+    .gesture(PanGesture()
+      .onActionStart((event: GestureEvent) => {
+        TemplateService.interactiveStart(this.pageId, this.stackId, this.ndId, event)
+      })
+      .onActionUpdate((event: GestureEvent) =>{
+        TemplateService.interactiveProgress(this.pageId, this.stackId, this.ndId, event)
+      })
+      .onActionEnd((event: GestureEvent) =>{
+        TemplateService.interactiveFinish(this.pageId, this.stackId, this.ndId, event)
+      })
+      .onActionCancel(() =>{
+        TemplateService.interactiveCancel(this.pageId, this.stackId, this.ndId)
+      })
+    )
+    .translate(this.translateOption)
+    .scale(this.scaleOption)
+    .opacity(this.opacityOption.opacity)
+    .onAppear(() => {
+      TemplateService.onAppear(this.pageId, this.stackId, this.pageUrl, this.ndId)
+    })
+    .onDisAppear(() => {
+      TemplateService.onDisAppear(this.pageId, this.stackId, this.pageUrl, this.ndId)
+    })
+    .onShown(() => {
+      TemplateService.onShown(this.pageId, this.stackId, this.pageUrl, this.ndId)
+    })
+    .onHidden(() => {
+      TemplateService.onHidden(this.pageId, this.stackId, this.pageUrl, this.ndId)
+    })
+    .onWillAppear(() => {
+      TemplateService.onWillAppear(this.pageId, this.stackId, this.pageUrl)
+    })
+    .onWillDisappear(() => {
+      TemplateService.onWillDisappear(this.pageId, this.stackId, this.pageUrl, this.ndId)
+    })
+    .onWillShow(() => {
+      TemplateService.onWillShow(this.pageId, this.stackId, this.pageUrl, this.ndId)
+    })
+    .onWillHide(() => {
+      TemplateService.onWillHide(this.pageId, this.stackId, this.pageUrl, this.ndId)
+    })
+    .onReady((navContext: NavDestinationContext) => {
+      this.ndId = navContext.navDestinationId!
+      TheRouter.getPathStack(this.stackId)?.changePageId(this.pageId, this.ndId)
+      TemplateService.onReady(this.pageId, this.stackId, this.pageUrl, this.ndId, navContext)
+    })
+    .onBackPressed(() => {
+      return TemplateService.onBackPressed(this.pageId, this.stackId, this.pageUrl, this.ndId)
+    })
+  }
+
+  hash(str: string): number {
+    let hash = 0;
+    if (str.length === 0) {
+      return hash;
+    }
+    for (let i = 0; i < str.length; i++) {
+      const char = str.charCodeAt(i);
+      hash = (hash << 5) - hash + char;
+      hash |= 0;
+    }
+    return hash;
+  }
+}

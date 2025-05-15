@@ -1,0 +1,48 @@
+{
+  "name": "@therouter/plugin",
+  "version": "1.0.0",
+  "main": "dist/Index.js",
+  "scripts": {
+    "test:unit": "cross-env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' TEST_ENV='unit' mocha",
+    "test": "cross-env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha",
+    "dev": "tsc && node dist/index.js",
+    "build": "tsc --outDir dist",
+    "release": "tsc  && node dist/index.js && npm publish --access public"
+  },
+  "keywords": [
+    "therouter",
+    "harmony",
+    "navigat"
+  ],
+  "author": "张涛",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "micromatch": "^4.0.8",
+    "ts-morph": "^23.0.0"
+  },
+  "devDependencies": {
+    "@ohos/hvigor": "^5.14.3",
+    "@ohos/hvigor-ohos-plugin": "^5.14.3",
+    "@types/chai": "^4.3.19",
+    "@types/ejs": "^3.1.5",
+    "@types/micromatch": "^4.0.9",
+    "@types/mocha": "^10.0.8",
+    "@types/node": "^20.16.6",
+    "chai": "^4.5.0",
+    "cross-env": "^7.0.3",
+    "mocha": "^10.7.3",
+    "ts-node": "^10.9.2"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
+  "homepage": "https://therouter.cn",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HuolalaTech/hll-wp-therouter-harmony.git"
+  },
+  "bugs": {
+    "url": "https://github.com/HuolalaTech/hll-wp-therouter-harmony/issues"
+  }
+}

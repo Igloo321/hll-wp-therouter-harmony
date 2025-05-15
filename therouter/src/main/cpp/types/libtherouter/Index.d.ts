@@ -1,0 +1,1 @@
+export const loadModule: (modulePath: string, moduleInfo: string) => ESObject;

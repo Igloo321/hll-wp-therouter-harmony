@@ -1,0 +1,15 @@
+{
+  "name": "entry",
+  "version": "1.0.0",
+  "description": "Please describe the basic information.",
+  "main": "",
+  "author": "",
+  "license": "",
+  "dependencies": {
+    "@therouter/library": "file:../therouter",
+    "base": "file:../base",
+    "business_a": "file:../business_a",
+    "business_b": "file:../business_b"
+  }
+}
+

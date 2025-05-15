@@ -1,0 +1,11 @@
+{
+  "name": "@therouter/library",
+  "version": "1.0.0",
+  "description": "A framework for assisting in the renovation of Harmony componentization",
+  "main": "Index.ets",
+  "author": "ZhangTao",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "libtherouter.so": "file:./src/main/cpp/types/libtherouter"
+  }
+}
