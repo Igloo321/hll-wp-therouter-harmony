@@ -175,7 +175,7 @@ DevEco-Studio 插件的全新版本，已完美支持一键迁移工具，无需
 
 迁移工具使用说明请见官网文档：[https://therouter.cn/docs/2022/09/29/01](https://therouter.cn/docs/2022/09/29/01)  
 
-<img src="https://therouter.cn/assets/img/image/TheRouterIdeaPlugin11.png" width="40%" />
+<img src="https://cdn.kymjs.com:8843/therouter_assets/img/image/TheRouterIdeaPlugin11.png" width="40%" />
 
 #### 3.2 导航快捷跳转
 
@@ -191,7 +191,7 @@ DevEco-Studio 插件的全新版本，已完美支持一键迁移工具，无需
 
 **目前最新版本已经支持展示类名和行数，所有代码更清晰**
 
-<img src="https://therouter.cn/assets/img/image/TheRouterIdeaPlugin1.jpg" class="blog-img">
+<img src="https://cdn.kymjs.com:8843/therouter_assets/img/image/TheRouterIdeaPlugin1.jpg" class="blog-img">
 
 #### 3.3 与其他路由对比
 
@@ -241,7 +241,7 @@ TheRouter
 加入 【TheRouter】 官方微信群：  
 *如过期，请加微信：kymjs123，拉你进群*   
 
-<img src="https://therouter.cn/assets/img/therouter_wx_group.png" width="40%" alt="TheRouter官方微信群：https://kymjs.com/therouter/wx" />
+<img src="https://cdn.kymjs.com:8843/therouter_assets/img/therouter_wx_group.png" width="40%" alt="TheRouter官方微信群：https://kymjs.com/therouter/wx" />
 
 ### 七、开源协议
 

@@ -161,7 +161,7 @@ Access via: **Top Menu → Tools → TheRouter**.
 
 Guide: [https://therouter.cn/docs/2022/09/29/01](https://therouter.cn/docs/2022/09/29/01)
 
-<img src="https://therouter.cn/assets/img/image/TheRouterIdeaPlugin11.png" width="40%" />  
+<img src="https://cdn.kymjs.com:8843/therouter_assets/img/image/TheRouterIdeaPlugin11.png" width="40%" />  
 
 #### 3.2 Navigation Shortcuts
 With the plugin installed:
@@ -170,7 +170,7 @@ With the plugin installed:
 
 **Latest version shows class names and line numbers for clarity.**
 
-<img src="https://therouter.cn/assets/img/image/TheRouterIdeaPlugin1.jpg" class="blog-img">  
+<img src="https://cdn.kymjs.com:8843/therouter_assets/img/image/TheRouterIdeaPlugin1.jpg" class="blog-img">  
 
 #### 3.3 Feature Comparison
 
@@ -218,7 +218,7 @@ See [Releases](https://github.com/HuolalaTech/hll-wp-therouter-harmony/releases)
 Join the **TheRouter WeChat Group**:  
 *If the QR code expires, add WeChat: `kymjs123`*
 
-<img src="https://therouter.cn/assets/img/therouter_wx_group.png" width="40%" alt="TheRouter WeChat Group" />  
+<img src="https://cdn.kymjs.com:8843/therouter_assets/img/therouter_wx_group.png" width="40%" alt="TheRouter WeChat Group" />  
 
 ---
 
