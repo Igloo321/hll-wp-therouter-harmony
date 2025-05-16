@@ -8,7 +8,9 @@
   "keywords": [
     "therouter",
     "router",
-    "navigation"
+    "navigation",
+    "路由",
+    "模块化"
   ],
   "homepage": "https://therouter.cn",
   "repository": {
